@@ -1,0 +1,20 @@
+{
+	"credit": "Made by ranafangirl",
+	"textures": {
+		"1": "dm_door_panel:block/door_panel_controls"
+	},
+	"elements": [
+		{
+			"from": [11, 2, 3],
+			"to": [14, 3, 7],
+			"faces": {
+				"north": {"uv": [3, 0, 6, 1], "texture": "#1"},
+				"east": {"uv": [3, 0, 6, 1], "texture": "#1"},
+				"south": {"uv": [3, 0, 6, 1], "texture": "#1"},
+				"west": {"uv": [3, 0, 6, 1], "texture": "#1"},
+				"up": {"uv": [3, 0, 6, 4], "texture": "#1"},
+				"down": {"uv": [0, 0, 3, 4], "texture": "#missing"}
+			}
+		}
+	]
+}

@@ -1,0 +1,8 @@
+{
+	"compatibilityLevel": "JAVA_8",
+	"minVersion": "0.7.10",
+	"package": "com.bug1312.dm_door_panel.mixins",
+	"refmap": "mixins.dm_door_panel.refmap.json",
+	"required": true,
+	"mixins": ["DoubleDoorsTileEntityMixin", "RoundelDoorTileEntityMixin", "TardisTileEntityMixin"]
+}

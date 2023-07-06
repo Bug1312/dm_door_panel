@@ -1,0 +1,33 @@
+modLoader="javafml"
+loaderVersion="[30,)"
+license="LGPL-3.0-only"
+issueTrackerURL="https://github.com/Bug1312/dm_door_panel/issues"
+[[mods]]
+modId="dm_door_panel"
+version="1.0.0"
+displayName="DM Door Panel Addon"
+displayURL="https://github.com/Bug1312/dm_door_panel"
+credits="Bug1312, ranafangirl"
+authors="Bug1312"
+description='''A Dalek Mod addon that adds in a door panel to open, close, lock, and unlock your TARDIS!'''
+
+[[dependencies.dm_door_panel]]
+    modId="forge"
+    mandatory=true
+    versionRange="[30,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.dm_door_panel]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.16.4,1.16.5]"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.dm_door_panel]]
+    modId="dalekmod"
+    mandatory=true
+    versionRange="[65.1.0,)"
+    ordering="NONE"
+    side="BOTH"

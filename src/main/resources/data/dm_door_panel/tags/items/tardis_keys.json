@@ -1,0 +1,9 @@
+{
+	"replace": false,
+	"values": [
+		"dalekmod:tardis_key",
+		"dalekmod:tardis_fan_key",
+		"dalekmod:tardis_spade_key",
+		"dalekmod:tardis_lock_pick_key"
+	]
+}

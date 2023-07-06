@@ -1,0 +1,23 @@
+{
+	"multipart": [
+		{ "when":{ "locked":"false", "facing": "north" }, "apply": { "model": "dm_door_panel:block/door_panel_unlocked", "y": 0} },
+		{ "when":{ "locked":"false", "facing": "east" }, "apply": { "model": "dm_door_panel:block/door_panel_unlocked", "y": 90} },
+		{ "when":{ "locked":"false", "facing": "south" }, "apply": { "model": "dm_door_panel:block/door_panel_unlocked", "y": 180} },
+		{ "when":{ "locked":"false", "facing": "west" }, "apply": { "model": "dm_door_panel:block/door_panel_unlocked", "y": 270} },
+
+		{ "when":{ "locked":"true", "facing": "north" }, "apply": { "model": "dm_door_panel:block/door_panel_locked", "y": 0} },
+		{ "when":{ "locked":"true", "facing": "east" }, "apply": { "model": "dm_door_panel:block/door_panel_locked", "y": 90} },
+		{ "when":{ "locked":"true", "facing": "south" }, "apply": { "model": "dm_door_panel:block/door_panel_locked", "y": 180} },
+		{ "when":{ "locked":"true", "facing": "west" }, "apply": { "model": "dm_door_panel:block/door_panel_locked", "y": 270} },
+
+		{ "when":{ "open":"false", "facing": "north" }, "apply": { "model": "dm_door_panel:block/door_panel_closed", "y": 0} },
+		{ "when":{ "open":"false", "facing": "east" }, "apply": { "model": "dm_door_panel:block/door_panel_closed", "y": 90} },
+		{ "when":{ "open":"false", "facing": "south" }, "apply": { "model": "dm_door_panel:block/door_panel_closed", "y": 180} },
+		{ "when":{ "open":"false", "facing": "west" }, "apply": { "model": "dm_door_panel:block/door_panel_closed", "y": 270} },
+
+		{ "when":{ "open":"true", "facing": "north" }, "apply": { "model": "dm_door_panel:block/door_panel_open", "y": 0} },
+		{ "when":{ "open":"true", "facing": "east" }, "apply": { "model": "dm_door_panel:block/door_panel_open", "y": 90} },
+		{ "when":{ "open":"true", "facing": "south" }, "apply": { "model": "dm_door_panel:block/door_panel_open", "y": 180} },
+		{ "when":{ "open":"true", "facing": "west" }, "apply": { "model": "dm_door_panel:block/door_panel_open", "y": 270} }
+	]
+}

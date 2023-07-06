@@ -1,0 +1,13 @@
+{
+	"block.dm_door_panel.door_panel": "Door Panel",
+
+	"tooltip.dm_door_panel.open": "Open Doors",
+	"tooltip.dm_door_panel.close": "Close Doors",
+	"tooltip.dm_door_panel.lock": "Lock Doors",
+	"tooltip.dm_door_panel.unlock": "Unlock Doors",
+
+	"notice.dm_door_panel.open": "You have opened the TARDIS doors",
+	"notice.dm_door_panel.close": "You have closed the TARDIS doors",
+	"notice.dm_door_panel.lock": "You have locked the TARDIS doors",
+	"notice.dm_door_panel.unlock": "You have unlocked the TARDIS doors"
+}

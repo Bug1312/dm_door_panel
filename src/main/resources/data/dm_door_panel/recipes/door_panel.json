@@ -1,0 +1,26 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"   ",
+		"BCK",
+		"SSS"
+	],
+	"key": {
+		"K": {
+			"tag": "dm_door_panel:tardis_keys"
+		},
+		"B": {
+			"tag": "minecraft:buttons"
+		},
+		"C": {
+			"tag": "forge:circuits/basic"
+		},
+		"S": {
+			"item": "minecraft:stone"
+		}
+	},
+	"result": {
+		"item": "dm_door_panel:door_panel",
+		"count": 1
+	}
+}
