@@ -1,0 +1,1 @@
+{ "type": "minecraft:block", "pools": [ { "rolls": 1, "entries": [ { "type": "minecraft:item", "name": "dm_door_panel:door_panel" } ], "conditions": [ { "condition": "minecraft:survives_explosion" } ] } ] }
