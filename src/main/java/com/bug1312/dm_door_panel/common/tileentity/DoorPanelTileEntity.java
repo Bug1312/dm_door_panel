@@ -34,7 +34,7 @@ public class DoorPanelTileEntity extends DMTileEntityBase implements ITickableTi
 	}
 	
 	public boolean toggleDoors(PlayerEntity player) {	
-		if (this.level.dimension() == DMDimensions.TARDIS) {		
+		if (this.level.isClientSide() || this.level.dimension() == DMDimensions.TARDIS) {		
 			TardisData data = DMTardis.getTardisFromInteriorPos(this.getBlockPos());
 			if (data != null) {				
 				if (data.isLocked()) {
@@ -69,7 +69,7 @@ public class DoorPanelTileEntity extends DMTileEntityBase implements ITickableTi
 	}
 	
 	public boolean toggleLocks(PlayerEntity player) {
-		if (this.level.dimension() == DMDimensions.TARDIS) {
+		if (this.level.isClientSide() || this.level.dimension() == DMDimensions.TARDIS) {
 			TardisData data = DMTardis.getTardisFromInteriorPos(this.getBlockPos());
 			if (data != null) {
 				data.setLocked(!data.isLocked());
@@ -100,7 +100,7 @@ public class DoorPanelTileEntity extends DMTileEntityBase implements ITickableTi
 		
 	@Override
 	public void tick() {
-		if (this.level.dimension() != DMDimensions.TARDIS) return;
+		if (this.level.isClientSide() || this.level.dimension() != DMDimensions.TARDIS) return;
 		TardisData data = DMTardis.getTardisFromInteriorPos(this.getBlockPos());
 		if (data == null) return;
 		

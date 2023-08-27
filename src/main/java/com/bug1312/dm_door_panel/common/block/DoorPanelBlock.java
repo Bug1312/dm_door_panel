@@ -90,7 +90,7 @@ public class DoorPanelBlock extends RotatableTileEntityBase.WaterLoggable implem
 	
 	@Override
 	public ActionResultType use(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult rayTraceResult) {
-		if (!world.isClientSide && hand == Hand.MAIN_HAND) {
+		if (!world.isClientSide() && hand == Hand.MAIN_HAND) {
 			Vector3d mouseVector = rayTraceResult.getLocation();
 			double mouseX = mouseVector.x() - pos.getX();
 			double mouseZ = mouseVector.z() - pos.getZ();
