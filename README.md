@@ -5,4 +5,4 @@ A Dalek Mod addon that adds in a door panel to open, close, lock, and unlock you
 Pull requests are welcome. For new content, please open an issue first to discuss what you would like to add/change.
 
 ## License
-[GPL-3.0-only](https://opensource.org/licenses/GPL-3.0)
+[LGPL-3.0-only](https://opensource.org/licenses/LGPL-3.0)
