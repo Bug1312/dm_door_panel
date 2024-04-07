@@ -1,4 +1,4 @@
-// Copyright 2023 Bug1312
+// Copyright 2024 Bug1312
 
 package com.bug1312.dm_door_panel.common.tileentity;
 
@@ -10,19 +10,22 @@ import com.swdteam.common.init.DMTranslationKeys;
 import com.swdteam.common.tardis.Location;
 import com.swdteam.common.tardis.TardisData;
 import com.swdteam.common.tardis.TardisDoor;
-import com.swdteam.common.tileentity.DMTileEntityBase;
 import com.swdteam.common.tileentity.TardisTileEntity;
 import com.swdteam.common.tileentity.TardisTileEntity.DoorSource;
+import com.swdteam.common.tileentity.tardis.TardisPanelTileEntity;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.server.ServerWorld;
 
-public class DoorPanelTileEntity extends DMTileEntityBase implements ITickableTileEntity {
+public class DoorPanelTileEntity extends TardisPanelTileEntity implements ITickableTileEntity {
+
+	private static final long serialVersionUID = -6361124286370831557L;
 
 	public DoorPanelTileEntity() {
 		super(BlockEntities.TILE_DOOR_PANEL.get());
@@ -111,5 +114,10 @@ public class DoorPanelTileEntity extends DMTileEntityBase implements ITickableTi
 			this.level.setBlockAndUpdate(this.getBlockPos(), this.getBlockState().setValue(DoorPanelBlock.LOCKED, data.isLocked()));
 			if (data.isLocked()) this.getBlockState().setValue(DoorPanelBlock.OPENED, false);
 		}
+	}
+	
+	@Override
+	public ResourceLocation getGUIIcon() {
+		return new ResourceLocation("dm_door_panel:textures/item/door_panel.png");
 	}
 }

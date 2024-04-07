@@ -48,8 +48,9 @@ repositories {
 dependencies {
 	minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 
-	implementation fg.deobf("curse.maven:the-dalek-mod-59654:4706185") // 68.1.1
-//	implementation fg.deobf("curse.maven:the-dalek-mod-59654:4258146") // 67
+	implementation fg.deobf("curse.maven:the-dalek-mod-59654:5198424") // 69.4.24
+// 	implementation fg.deobf("curse.maven:the-dalek-mod-59654:4706185") // 68.1.1
+// 	implementation fg.deobf("curse.maven:the-dalek-mod-59654:4258146") // 67
 // 	implementation fg.deobf("curse.maven:the-dalek-mod-59654:3987010") // 65.1.1
 // 	implementation fg.deobf("curse.maven:the-dalek-mod-59654:3974844") // 65.1.0
 // 	implementation fg.deobf("curse.maven:the-dalek-mod-59654:3595382") // 65.0.1

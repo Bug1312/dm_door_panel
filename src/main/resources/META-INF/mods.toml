@@ -4,7 +4,7 @@ license="LGPL-3.0-only"
 issueTrackerURL="https://github.com/Bug1312/dm_door_panel/issues"
 [[mods]]
 modId="dm_door_panel"
-version="1.0.3"
+version="1.1.0"
 displayName="DM Door Panel Addon"
 displayURL="https://github.com/Bug1312/dm_door_panel"
 credits="Bug1312, ranafangirl"
@@ -28,6 +28,6 @@ description='''A Dalek Mod addon that adds in a door panel to open, close, lock,
 [[dependencies.dm_door_panel]]
     modId="dalekmod"
     mandatory=true
-    versionRange="[65.1.0,)"
+    versionRange="[69,)"
     ordering="NONE"
     side="BOTH"

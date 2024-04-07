@@ -9,5 +9,6 @@
 	"notice.dm_door_panel.open": "You have opened the TARDIS doors",
 	"notice.dm_door_panel.close": "You have closed the TARDIS doors",
 	"notice.dm_door_panel.lock": "You have locked the TARDIS doors",
-	"notice.dm_door_panel.unlock": "You have unlocked the TARDIS doors"
+	"notice.dm_door_panel.unlock": "You have unlocked the TARDIS doors",
+	"notice.dm_door_panel.broken": "Door Panel is broken!"
 }

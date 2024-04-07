@@ -1,11 +1,13 @@
-// Copyright 2023 Bug1312
+// Copyright 2024 Bug1312
 
 package com.bug1312.dm_door_panel.common.block;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.function.Supplier;
 
 import javax.annotation.Nullable;
@@ -14,12 +16,19 @@ import com.bug1312.dm_door_panel.common.tileentity.DoorPanelTileEntity;
 import com.swdteam.common.block.IBlockTooltip;
 import com.swdteam.common.block.RotatableTileEntityBase;
 import com.swdteam.common.init.DMSoundEvents;
+import com.swdteam.common.init.DMTardis;
+import com.swdteam.common.tardis.TardisData;
+import com.swdteam.common.tileentity.tardis.PanelHealthUpgrade;
+import com.swdteam.common.tileentity.tardis.TardisPanelTileEntity;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.StateContainer.Builder;
 import net.minecraft.tileentity.TileEntity;
@@ -100,26 +109,27 @@ public class DoorPanelBlock extends RotatableTileEntityBase.WaterLoggable implem
 				TileEntity tile = world.getBlockEntity(pos);
 				if (tile instanceof DoorPanelTileEntity) {
 					DoorPanelTileEntity panel = ((DoorPanelTileEntity) tile);
-
-					switch (button) {
-						case DOOR: 
-							boolean open = panel.toggleDoors(player);
-							if (state.getValue(OPENED) != open) {
-								world.setBlockAndUpdate(pos, state.setValue(OPENED, open));
-								world.playSound(null, pos, DMSoundEvents.TARDIS_CONTROLS_BUTTON_CLICK.get(), SoundCategory.BLOCKS, 1, 1);
-							}
-							break;
-						case LOCK:
-							boolean lock = panel.toggleLocks(player);
-							if (state.getValue(LOCKED) != lock) {
-								world.setBlockAndUpdate(pos, state.setValue(LOCKED, lock));
-								world.playSound(null, pos, DMSoundEvents.TARDIS_LOCK.get(), SoundCategory.BLOCKS, 1, 1);
-							}
-							if (lock) {
-								world.setBlockAndUpdate(pos, state.setValue(LOCKED, true).setValue(OPENED, false));
-								world.playSound(null, pos, DMSoundEvents.TARDIS_CONTROLS_BUTTON_CLICK.get(), SoundCategory.BLOCKS, 1, 1);
-							}
-							break;
+					if (panel.validUse(new TranslationTextComponent("notice.dm_door_panel.broken").getString(), player, world)) {
+						switch (button) {
+							case DOOR: 
+								boolean open = panel.toggleDoors(player);
+								if (state.getValue(OPENED) != open) {
+									world.setBlockAndUpdate(pos, state.setValue(OPENED, open));
+									world.playSound(null, pos, DMSoundEvents.TARDIS_CONTROLS_BUTTON_CLICK.get(), SoundCategory.BLOCKS, 1, 1);
+								}
+								break;
+							case LOCK:
+								boolean lock = panel.toggleLocks(player);
+								if (state.getValue(LOCKED) != lock) {
+									world.setBlockAndUpdate(pos, state.setValue(LOCKED, lock));
+									world.playSound(null, pos, DMSoundEvents.TARDIS_LOCK.get(), SoundCategory.BLOCKS, 1, 1);
+								}
+								if (lock) {
+									world.setBlockAndUpdate(pos, state.setValue(LOCKED, true).setValue(OPENED, false));
+									world.playSound(null, pos, DMSoundEvents.TARDIS_CONTROLS_BUTTON_CLICK.get(), SoundCategory.BLOCKS, 1, 1);
+								}
+								break;
+						}
 					}
 				}
 			}			
@@ -165,6 +175,29 @@ public class DoorPanelBlock extends RotatableTileEntityBase.WaterLoggable implem
 		}
 		
 		return null;
+	}
+	
+	// Boilerplate for panels
+	public void setPlacedBy(World world, BlockPos pos, BlockState state, @Nullable LivingEntity livingEntity, ItemStack stack) {
+		TileEntity te = world.getBlockEntity(pos);
+		if (te instanceof TardisPanelTileEntity) {
+			TardisPanelTileEntity panel = (TardisPanelTileEntity) te;
+			if (stack.hasTag()) {
+				CompoundNBT nbt = stack.getOrCreateTag();
+				if (nbt.contains("PanelDamage")) panel.setDamage(nbt.getInt("PanelDamage"));
+				if (nbt.contains("PanelDurability")) panel.setDurability(nbt.getInt("PanelDurability"));
+				if (nbt.contains("PanelName")) panel.setName(nbt.getString("PanelName"));
+				if (nbt.contains("PanelCircuit")) {
+					Optional<PanelHealthUpgrade> healthUpgrade = Arrays.stream(PanelHealthUpgrade.values())
+				        .filter(value -> value.id().equalsIgnoreCase(nbt.getString("PanelCircuit"))).findFirst();
+					if (healthUpgrade.isPresent()) panel.setHealthUpgrade(healthUpgrade.get());
+				}
+			}
+
+			TardisData data = DMTardis.getTardisFromInteriorPos(pos);
+			panel.addOrCheckToTardisData(data);
+			data.save();
+		}
 	}
 
 	private static enum DoorPanelButtons {
